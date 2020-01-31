@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.tushar.dagger22example.BaseActivity
 import com.tushar.dagger22example.R
+import com.tushar.dagger22example.ui.main.profile.ProfileFragment
 
 
 class MainActivity : BaseActivity() {
@@ -14,7 +15,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Toast.makeText(this,"Login Successful",Toast.LENGTH_LONG).show()
+        showProfile()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -32,5 +33,9 @@ class MainActivity : BaseActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun showProfile(){
+        supportFragmentManager.beginTransaction().replace(R.id.main_container,ProfileFragment()).commit()
     }
 }
